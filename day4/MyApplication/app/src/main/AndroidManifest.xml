@@ -24,6 +24,13 @@
         <activity android:name=".ThirdActivity"
             android:process="com.example.ienning.ipcways.remote"
             android:configChanges="screenLayout"/>
+        <activity android:name=".messenger.MessengerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <service android:name=".messenger.MessengerService"
+            android:process=":remote" />
     </application>
 
 </manifest>
