@@ -11,13 +11,12 @@ import com.example.ienning.ipcways.R;
 import com.example.ienning.ipcways.aidl.Book;
 import com.example.ienning.ipcways.model.User;
 
-import static android.content.ContentValues.TAG;
-
 /**
  * Created by ienning on 16-11-5.
  */
 
 public class ProviderActivity extends Activity {
+    private static final String TAG = "Ienning";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
