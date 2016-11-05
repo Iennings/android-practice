@@ -3,18 +3,29 @@
     package="com.example.ienning.ipcways">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.example.ienning.ipcways.permission.ACCESS_BOOK_SERVICE"/>
+    <permission android:name="com.example.ienning.ipcways.permission.ACCESS_BOOK_SERVICE"
+        android:protectionLevel="normal"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--
         <activity android:name=".MainActivity"
             android:launchMode="standard"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+            -->
+        <activity android:name=".aidl.BookManagerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -31,6 +42,9 @@
         </activity>
         <service android:name=".messenger.MessengerService"
             android:process=":remote" />
+        <service android:name=".aidl.BookManagerService"
+            android:process=":remote" />
     </application>
+
 
 </manifest>
