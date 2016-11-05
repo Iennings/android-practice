@@ -4,7 +4,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="com.example.ienning.ipcways.permission.ACCESS_BOOK_SERVICE"/>
+    <uses-permission android:name="com.example.ienning.PROVIDER"/>
     <permission android:name="com.example.ienning.ipcways.permission.ACCESS_BOOK_SERVICE"
+        android:protectionLevel="normal"/>
+    <permission android:name="com.example.ienning.PROVIDER"
         android:protectionLevel="normal"/>
     <application
         android:allowBackup="true"
@@ -22,13 +25,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-            -->
+
         <activity android:name=".aidl.BookManagerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+            -->
+        <activity android:name=".provider.ProviderActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".SecondActivity"
             android:process=":remote"
             android:configChanges="screenLayout"/>
@@ -44,6 +55,12 @@
             android:process=":remote" />
         <service android:name=".aidl.BookManagerService"
             android:process=":remote" />
+        <provider
+            android:authorities="com.example.ienning.book.provider"
+            android:process=":provider"
+            android:permission="com.example.ienning.PROVIDER"
+            android:name=".provider.BookProvider">
+        </provider>
     </application>
 
 
