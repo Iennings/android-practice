@@ -84,6 +84,7 @@
             android:permission="com.example.ienning.PROVIDER"
             android:name=".provider.BookProvider">
         </provider>
+        <!--
         <activity android:name=".socket.TCPClientActivity"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -93,6 +94,15 @@
         </activity>
         <service android:name=".socket.TCPServerService"
             android:process=":remote"/>
+            -->
+        <activity android:name=".binderpool.BinderPoolActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service android:name=".binderpool.BinderPoolService"
+            android:process=":remote" />
     </application>
 
 

@@ -90,6 +90,7 @@ public class TCPClientActivity extends Activity implements View.OnClickListener 
         if (view == sendButton) {
             final String msg = messageEditText.getText().toString();
             if (!TextUtils.isEmpty(msg) && printWriter != null) {
+                //msg
                 printWriter.println(msg);
                 messageEditText.setText("");
                 String time = formatDateTime(System.currentTimeMillis());
@@ -117,6 +118,7 @@ public class TCPClientActivity extends Activity implements View.OnClickListener 
             }
         }
         try {
+            // 接收服务器消息
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while (!TCPClientActivity.this.isFinishing()) {
                 String msg = br.readLine();
@@ -124,6 +126,7 @@ public class TCPClientActivity extends Activity implements View.OnClickListener 
                 if (msg != null) {
                     String time = formatDateTime(System.currentTimeMillis());
                     final String showMsg = "server " + time + ":" + msg + "\n";
+                    //发送消息给handler
                     handlder.obtainMessage(MESSAGE_RECEIVE_NEW_MSG, showMsg).sendToTarget();
                 }
             }

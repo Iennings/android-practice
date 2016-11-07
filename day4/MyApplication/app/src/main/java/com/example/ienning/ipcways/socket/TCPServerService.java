@@ -70,7 +70,7 @@ public class TCPServerService extends Service {
                             } catch(IOException e) {
                                 e.printStackTrace();
                             }
-                        };
+                        }
                     }.start();
                 } catch(IOException e) {
                     e.printStackTrace();
@@ -92,7 +92,8 @@ public class TCPServerService extends Service {
             }
             int i = new Random().nextInt(definedMessages.length);
             String msg = definedMessages[i];
-            out.println("send: " + msg);
+            out.println(msg);
+            System.out.println("Send: " + msg);
         }
         System.out.println("client quit.");
         //关闭流
