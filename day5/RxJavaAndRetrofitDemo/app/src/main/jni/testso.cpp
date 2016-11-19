@@ -74,7 +74,7 @@ done:
 */
 void Check_CVES_2015_1528()
 {
-    void *handle = dlopen("testso.so", RTLD_NOW | RTLD_GLOBAL);
+    void *handle = dlopen("/data/data/com.example.ienning.rxjavaandretrofitdemo/lib/testso.so", RTLD_NOW | RTLD_GLOBAL);
     //void (*enter_shell)(int*);
     //int (*do_work)(int, int*);
     //enter_shell = dlsym(handle, "enter_shell");
@@ -108,7 +108,7 @@ void Check_CVES_2015_1528()
     */
 
 }
-JNIEXPORT jstring JNICALL Java_com_ienning_rxjavaandretrofitdemo_Testso_get(JNIEnv *env, jobject thiz) {
+JNIEXPORT jstring JNICALL Java_com_example_ienning_rxjavaandretrofitdemo_Testso_get(JNIEnv *env, jobject thiz) {
     Check_CVES_2015_1528();
     return env->NewStringUTF("Hello Ienning JNI!");
 }

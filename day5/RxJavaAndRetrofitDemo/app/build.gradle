@@ -9,7 +9,22 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+        ndk {
+            moduleName "jni-test"
+        }
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    productFlavors {
+        arm {
+            ndk {
+                abiFilter "armeabi"
+            }
+        }
+        x86 {
+            ndk {
+                abiFilter "x86"
+            }
+        }
     }
     buildTypes {
         release {
