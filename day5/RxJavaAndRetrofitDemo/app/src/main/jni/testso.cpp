@@ -13,7 +13,7 @@
 /*
 int Check_CVE_2015_1528()
 {
-    const char *libname = "testso.so";
+    const char *libname = "ibtestso.so";
     size_t * ( *native_handle_create )( int numFds, int numInts ) = NULL;
     void *handle = dlopen( libname, RTLD_NOW | RTLD_GLOBAL );
     if( !handle )
@@ -72,17 +72,36 @@ done:
     return ret;
 }
 */
-void Check_CVES_2015_1528()
-{
-    void *handle = dlopen("/data/data/com.example.ienning.rxjavaandretrofitdemo/lib/testso.so", RTLD_NOW | RTLD_GLOBAL);
-    //void (*enter_shell)(int*);
-    //int (*do_work)(int, int*);
-    //enter_shell = dlsym(handle, "enter_shell");
-    //do_work = dlsym(handle, "do_work");
-    void (*test)();
-    test = (void (*)()) dlsym(handle, "test");
-    test();
+char * Check_CVES_2015_1528() {
+    printf("to test cves_2015_1528 if ok?");
+    void *handle = dlopen("/data/data/com.example.ienning.rxjavaandretrofitdemo/lib/libtestso.so",
+                          RTLD_LAZY);
+    if (!handle) {
+        return "bye,byehandle";
+    }
+    void (*enter_shell)(int pipeout[]) = NULL;
+    int (*do_work)(int round, int *pipein) = NULL;
+    enter_shell = (void (*)(int*))dlsym(handle, "enter_shell");
+    do_work = (int (*)(int, int*))dlsym(handle, "do_work");
+    if(!do_work) {
+        return "work failed";
+    }
+    if (!enter_shell) {
+        return "enter shell failed";
+    }
     /*
+    int (*testso)();
+    testso = (int (*)()) dlsym(handle, "testso");
+    if (!testso) {
+        return "byebye";
+    }
+    if (testso() == 1)
+    {
+        return "success";
+    }
+    return "failed";
+    //test();
+     */
     char buffer[4096];
     int pipetoserver[2];
     int pipefromserver[2];
@@ -105,12 +124,11 @@ void Check_CVES_2015_1528()
         do_work(2, pipein);
         sleep(1);
     }
-    */
+    return "failed";
 
 }
 JNIEXPORT jstring JNICALL Java_com_example_ienning_rxjavaandretrofitdemo_Testso_get(JNIEnv *env, jobject thiz) {
-    Check_CVES_2015_1528();
-    return env->NewStringUTF("Hello Ienning JNI!");
+    return env->NewStringUTF(Check_CVES_2015_1528());
 }
 JNIEXPORT void JNICALL Java_com_example_ienning_rxjavaandretrofitdemo_Testso_set(JNIEnv *env, jobject thiz, jstring str) {
 
