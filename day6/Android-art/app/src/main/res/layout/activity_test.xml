@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:padding="10px"
+    android:layout_height="match_parent">
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="MoVingButton"
+        android:id="@+id/button1"
+        android:background="#ff0000"/>
+    <com.example.ienning.android_art.ui.TestButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/button2"
+        android:background="#000000"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:text="我可以滑动"/>
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText1"
+        android:ems="10"
+        android:text="A"/>
+
+</LinearLayout>

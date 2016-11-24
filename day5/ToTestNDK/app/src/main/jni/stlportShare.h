@@ -1,0 +1,8 @@
+//
+// Created by ienning on 16-11-20.
+//
+
+#ifndef TOTESTNDK_STLPORTSHARE_H
+#define TOTESTNDK_STLPORTSHARE_H
+
+#endif //TOTESTNDK_STLPORTSHARE_H
